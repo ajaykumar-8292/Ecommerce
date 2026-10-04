@@ -8,6 +8,8 @@ import Products from"./pages/products";
 import Footer from "./components/Footer";
 import Cart from "./pages/cart";
 import Login from "./pages/Login";
+import Checkout from "./pages/Checkout";
+
 
 
 
@@ -28,6 +30,8 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<Checkout />} />
+       
       </Routes>
       <Footer />
     </BrowserRouter>

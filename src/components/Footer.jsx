@@ -28,14 +28,14 @@ function Footer() {
           <div className="mt-5 flex gap-3">
 
             <a
-              href="#"
+              href="https://www.facebook.com/share/19bgdTUVZE/"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700"
             >
               <FaFacebookF />
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/yadav_ajay__999?stkn=ajM3MDd1cnpvODF4"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-pink-600 hover:bg-pink-700"
             >
               <FaInstagram />
@@ -49,7 +49,7 @@ function Footer() {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/in/ajay-kumar-544081373/"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 hover:bg-blue-800"
             >
               <FaLinkedinIn />

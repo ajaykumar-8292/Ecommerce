@@ -71,7 +71,8 @@ function Home() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-
+<Link
+            to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">👕</div>
             <h3 className="mt-4 text-xl font-bold">Fashion</h3>
@@ -79,7 +80,10 @@ function Home() {
               Latest fashion products
             </p>
           </div>
+          </Link>
 
+
+<Link to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">📱</div>
             <h3 className="mt-4 text-xl font-bold">Electronics</h3>
@@ -87,7 +91,10 @@ function Home() {
               Latest electronic products
             </p>
           </div>
+          </Link>
 
+
+<Link to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">👟</div>
             <h3 className="mt-4 text-xl font-bold">Shoes</h3>
@@ -95,7 +102,10 @@ function Home() {
               Stylish shoes collection
             </p>
           </div>
+          </Link>
 
+
+<Link to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">🎧</div>
             <h3 className="mt-4 text-xl font-bold">Accessories</h3>
@@ -103,7 +113,10 @@ function Home() {
               Useful accessories
             </p>
           </div>
+          </Link>
 
+
+          <Link to="/products">
              <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">💻</div>
             <h3 className="mt-4 text-xl font-bold">Laptops</h3>
@@ -111,8 +124,10 @@ function Home() {
               Powerful laptops for work and study
             </p>
           </div>
+          </Link>
 
 
+   <Link to="/products">
    <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">⌚</div>
             <h3 className="mt-4 text-xl font-bold">Watches</h3>
@@ -120,7 +135,9 @@ function Home() {
               Modern watches and fitness bands
             </p>
           </div>
+          </Link>
 
+<Link to="/products">
 <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">👓</div>
             <h3 className="mt-4 text-xl font-bold">Eyewear</h3>
@@ -128,8 +145,9 @@ function Home() {
               Stylish glasses and sunglasses
             </p>
           </div>
+          </Link>
 
-
+<Link to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">🖥️</div>
             <h3 className="mt-4 text-xl font-bold">Monitors</h3>
@@ -137,8 +155,9 @@ function Home() {
               Computer monitors and displays
             </p>
           </div>
+          </Link>
 
-
+<Link to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">⌨️</div>
             <h3 className="mt-4 text-xl font-bold">Keyboards</h3>
@@ -146,8 +165,9 @@ function Home() {
               Mechanical and wireless keyboards
             </p>
           </div>
+          </Link>
 
-
+<Link to="/products">
            <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">🔊</div>
             <h3 className="mt-4 text-xl font-bold">Speakers</h3>
@@ -155,8 +175,9 @@ function Home() {
               Bluetooth and home speakers
             </p>
           </div>
+          </Link>
 
-
+<Link to="/products">
            <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">🖱️</div>
             <h3 className="mt-4 text-xl font-bold">Mouse</h3>
@@ -164,8 +185,9 @@ function Home() {
               Wireless and gaming mouse
             </p>
           </div>
+          </Link>
 
-
+<Link to="/products">
           <div className="rounded-xl bg-white p-8 text-center shadow-md transition hover:-translate-y-2 hover:shadow-xl">
             <div className="text-5xl">💄</div>
             <h3 className="mt-4 text-xl font-bold">Beauty</h3>
@@ -173,6 +195,7 @@ function Home() {
               Beauty and personal-care products
             </p>
           </div>
+          </Link>
 
 
 

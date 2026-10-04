@@ -5,20 +5,56 @@ import image from "../assets/image-1.png";
 import image2 from "../assets/image-2.png";
 import image3 from "../assets/image-3.png";
 import image4 from "../assets/image-4.png";
+import image5 from "../assets/image-5.png";
 import image6 from "../assets/image-6.png";
 import image7 from "../assets/image-7.png";
-
-
+import image8 from "../assets/image-8.png";
+import image9 from "../assets/image-9.png";
+import image10 from "../assets/image-10.png";
+import image11 from "../assets/image-11.png";
+import image12 from "../assets/image-12.png";
+import image13 from "../assets/image-13.png";
+import image14 from "../assets/image-14.png";
+import image15 from "../assets/image-15.png";
+import image16 from "../assets/image-16.png";
 
 function Cart() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const savedCart =
-      JSON.parse(localStorage.getItem("cart")) || [];
-
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(savedCart);
   }, []);
+
+  const addToCart = (product) => {
+    const existingCart =
+      JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingProduct = existingCart.find(
+      (item) => item.id === product.id
+    );
+
+    let updatedCart;
+
+    if (existingProduct) {
+      updatedCart = existingCart.map((item) =>
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    } else {
+      updatedCart = [
+        ...existingCart,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ];
+    }
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCart(updatedCart);
+  };
 
   const updateQuantity = (id, change) => {
     const updatedCart = cart
@@ -45,6 +81,137 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const products = [
+    {
+      id: 101,
+      name: "Smartphone",
+      image: image,
+      price: 24999,
+      oldPrice: 29999,
+      rating: 4.5,
+    },
+    {
+      id: 102,
+      name: "Air Fryer",
+      image: image2,
+      price: 4999,
+      oldPrice: 7999,
+      rating: 4.2,
+    },
+    {
+      id: 103,
+      name: "Android Tablet",
+      image: image3,
+      price: 18999,
+      oldPrice: 24999,
+      rating: 4.4,
+    },
+    {
+      id: 104,
+      name: "Bluetooth Speaker",
+      image: image4,
+      price: 2199,
+      oldPrice: 3499,
+      rating: 4.1,
+    },
+    {
+      id: 105,
+      name: "Coffee Machine",
+      image: image5,
+      price: 3999,
+      oldPrice: 5999,
+      rating: 4.3,
+    },
+    {
+      id: 106,
+      name: "4K Camera",
+      image: image6,
+      price: 55999,
+      oldPrice: 69999,
+      rating: 4.5,
+    },
+    {
+      id: 107,
+      name: "Office Bag",
+      image: image7,
+      price: 1499,
+      oldPrice: 2499,
+      rating: 4.0,
+    },
+    {
+      id: 108,
+      name: "Smart Watch",
+      image: image8,
+      price: 2999,
+      oldPrice: 4999,
+      rating: 4.6,
+    },
+    {
+      id: 109,
+      name: "Monitor",
+      image: image9,
+      price: 14999,
+      oldPrice: 18999,
+      rating: 4.4,
+    },
+    {
+      id: 110,
+      name: "RGB Mouse",
+      image: image10,
+      price: 1299,
+      oldPrice: 1999,
+      rating: 4.3,
+    },
+    {
+      id: 111,
+      name: "Beauty Product",
+      image: image11,
+      price: 1099,
+      oldPrice: 1999,
+      rating: 4.5,
+    },
+    {
+      id: 112,
+      name: "Travel Bag",
+      image: image12,
+      price: 1999,
+      oldPrice: 2999,
+      rating: 4.1,
+    },
+    {
+      id: 113,
+      name: "Keyboard",
+      image: image13,
+      price: 1699,
+      oldPrice: 2499,
+      rating: 4.3,
+    },
+    {
+      id: 114,
+      name: "Men Jacket",
+      image: image14,
+      price: 2999,
+      oldPrice: 4999,
+      rating: 4.2,
+    },
+    {
+      id: 115,
+      name: "Men T-Shirt",
+      image: image15,
+      price: 899,
+      oldPrice: 1499,
+      rating: 4.0,
+    },
+    {
+      id: 116,
+      name: "Office Chair",
+      image: image16,
+      price: 8999,
+      oldPrice: 12999,
+      rating: 4.4,
+    },
+  ];
+
   const totalItems = cart.reduce(
     (total, item) => total + item.quantity,
     0
@@ -56,148 +223,141 @@ function Cart() {
   );
 
   return (
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
 
-     <>
-    <div className=" bg-gray-100 px-4 py-10">
+      {/* CART */}
+      <div className="max-w-7xl mx-auto">
 
-      <div className="mx-auto max-w-7xl">
-
-        <h1 className="mb-2 text-3xl font-bold">
-          Shopping Cart
+        <h1 className="text-3xl font-bold mb-6">
+          My Cart
         </h1>
 
-        <p className="mb-8 text-gray-600">
-          {totalItems} Product(s) in your cart
-        </p>
-
         {cart.length === 0 ? (
-          <div className="rounded-lg bg-white p-10 text-center shadow">
-            <h2 className="mb-3 text-2xl font-bold">
-              🛒 Your Cart is Empty
+          <div className="bg-white rounded-xl p-10 text-center shadow">
+            <h2 className="text-2xl font-bold">
+              Your Cart is Empty
             </h2>
 
-            <p className="mb-6 text-gray-500">
+            <p className="text-gray-500 mt-2">
               Add some products to your cart.
             </p>
 
             <Link
               to="/products"
-              className="inline-block rounded-lg bg-yellow-400 px-6 py-3 font-semibold hover:bg-yellow-500"
+              className="inline-block mt-5 bg-blue-600 text-white px-6 py-3 rounded-lg"
             >
-              Start Shopping
+              Continue Shopping
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="grid lg:grid-cols-3 gap-6">
 
-            {/* PRODUCTS */}
-            <div className="space-y-4 lg:col-span-2">
+            {/* CART PRODUCTS */}
+            <div className="lg:col-span-2 space-y-4">
 
               {cart.map((product) => (
                 <div
                   key={product.id}
-                  className="flex flex-col gap-4 rounded-lg bg-white p-4 shadow sm:flex-row sm:items-center"
+                  className="bg-white rounded-xl shadow p-4"
                 >
+                  <div className="flex flex-col md:flex-row gap-5">
 
-                  {/* IMAGE */}
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-32 w-full object-contain sm:w-32"
-                  />
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full md:w-40 h-40 object-contain"
+                    />
 
-                  {/* DETAILS */}
-                  <div className="flex-1">
+                    <div className="flex-1">
 
-                    <h2 className="text-xl font-bold">
-                      {product.name}
-                    </h2>
+                      <h2 className="text-xl font-bold">
+                        {product.name}
+                      </h2>
 
-                    <p className="mt-1 text-sm text-gray-500">
-                      {product.description}
-                    </p>
+                      <p className="text-gray-500 mt-2">
+                        {product.description}
+                      </p>
 
-                    <p className="mt-2 text-lg font-bold">
-                      ₹{product.price.toLocaleString("en-IN")}
-                    </p>
+                      <p className="text-green-600 font-bold mt-2">
+                        ₹{product.price.toLocaleString("en-IN")}
+                      </p>
 
-                    {/* QUANTITY */}
-                    <div className="mt-3 flex items-center gap-3">
+                      <div className="flex items-center gap-3 mt-4">
+
+                        <button
+                          onClick={() =>
+                            updateQuantity(product.id, -1)
+                          }
+                          className="bg-gray-200 px-4 py-2 rounded"
+                        >
+                          -
+                        </button>
+
+                        <span className="font-bold">
+                          {product.quantity}
+                        </span>
+
+                        <button
+                          onClick={() =>
+                            updateQuantity(product.id, 1)
+                          }
+                          className="bg-gray-200 px-4 py-2 rounded"
+                        >
+                          +
+                        </button>
+
+                      </div>
+
+                      <p className="font-bold mt-3">
+                        Total: ₹
+                        {(
+                          product.price * product.quantity
+                        ).toLocaleString("en-IN")}
+                      </p>
 
                       <button
                         onClick={() =>
-                          updateQuantity(product.id, -1)
+                          removeProduct(product.id)
                         }
-                        className="h-8 w-8 rounded border border-black"
+                        className="text-red-500 mt-3"
                       >
-                        -
-                      </button>
-
-                      <span className="font-bold">
-                        {product.quantity}
-                      </span>
-
-                      <button
-                        onClick={() =>
-                          updateQuantity(product.id, 1)
-                        }
-                        className="h-8 w-8 rounded border border-black"
-                      >
-                        +
+                        Remove
                       </button>
 
                     </div>
-
                   </div>
-
-                  {/* PRODUCT TOTAL */}
-                  <div className="text-right">
-
-                    <p className="text-xl font-bold">
-                      ₹
-                      {(
-                        product.price * product.quantity
-                      ).toLocaleString("en-IN")}
-                    </p>
-
-                    <button
-                      onClick={() =>
-                        removeProduct(product.id)
-                      }
-                      className="mt-3 text-red-500 hover:underline"
-                    >
-                      Remove
-                    </button>
-
-                  </div>
-
                 </div>
               ))}
 
             </div>
 
             {/* ORDER SUMMARY */}
-            <div className="h-fit rounded-lg bg-white p-6 shadow">
+            <div className="bg-white rounded-xl shadow p-6 h-fit">
 
-              <h2 className="mb-5 border-b pb-4 text-2xl font-bold">
+              <h2 className="text-2xl font-bold mb-5">
                 Order Summary
               </h2>
 
-              <div className="flex justify-between py-2">
-                <span>Total Products</span>
-                <span className="font-semibold">
-                  {totalItems}
-                </span>
+              <div className="flex justify-between mb-3">
+                <span>Total Items</span>
+                <span>{totalItems}</span>
               </div>
 
-              <div className="flex justify-between py-2">
+              <div className="flex justify-between mb-3">
                 <span>Subtotal</span>
                 <span>
                   ₹{totalPrice.toLocaleString("en-IN")}
                 </span>
               </div>
 
-              <div className="my-4 border-t"></div>
+              <div className="flex justify-between mb-3">
+                <span>Delivery</span>
+                <span className="text-green-600">
+                  FREE
+                </span>
+              </div>
+
+              <hr className="my-4" />
 
               <div className="flex justify-between text-xl font-bold">
                 <span>Total</span>
@@ -206,156 +366,76 @@ function Cart() {
                 </span>
               </div>
 
-              <button className="mt-6 w-full rounded-lg bg-yellow-400 py-3 font-bold hover:bg-yellow-500">
-                Proceed to Checkout
-              </button>
-
               <Link
-                to="/products"
-                className="mt-3 block text-center text-blue-600 hover:underline"
-              >
-                Continue Shopping
-              </Link>
+  to="/checkout"
+  className="block w-full bg-yellow-400 hover:bg-yellow-500 py-3 rounded-lg font-bold mt-6 text-center"
+>
+  Place Order
+</Link>
 
             </div>
-
           </div>
         )}
 
+        {/* MANY PRODUCT CARDS */}
+        <div className="mt-12">
+
+          <h2 className="text-3xl font-bold mb-6">
+            More Products
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-xl shadow-md p-5 hover:-translate-y-2 hover:shadow-xl transition"
+              >
+
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-48 object-contain"
+                />
+
+                <div className="mt-4">
+
+                  <p className="text-yellow-500 font-semibold">
+                    ⭐ {product.rating}
+                  </p>
+
+                  <h3 className="text-xl font-bold mt-2">
+                    {product.name}
+                  </h3>
+
+                  <div className="flex gap-2 items-center mt-3">
+
+                    <span className="text-xl font-bold">
+                      ₹{product.price.toLocaleString("en-IN")}
+                    </span>
+
+                    <span className="text-gray-400 line-through">
+                      ₹{product.oldPrice.toLocaleString("en-IN")}
+                    </span>
+
+                  </div>
+
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="w-full bg-yellow-400 hover:bg-yellow-500 py-3 rounded-lg font-bold mt-4 cursor-pointer"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
       </div>
     </div>
-
-
-<div className='w-full   p-4  grid gap-6 sm:grid-cols-2 lg:grid-cols-6 '>
-
- <div className="rounded-xl bg-white p-4 text-left shadow-md transition hover:-translate-y-2 hover:shadow-xl  w-full md:w-60  ">
-            <div className=" ">
-                <img src={image} alt="image-1" className="w-full" />
-                 <p className=" pt-5">4.5⭐Ratting</p>
-            </div>
-            <h3 className="mt-1 text-xl font-bold pr-50">Mobiles</h3>
-            <p className="mt-2 text-gray-500 ">
-              5G Smartphone
-            </p>
-            <div className="flex gap-2 ">
-              <span className="text-blue-600 font-bold">17%</span>
-            <p className="line-through"> 29,999</p> 
-            <span className="font-bold">  ₹24,999</span>
-           </div>
-           <button className="bg-yellow-400 w-23  rounded-xl mt-3 md:ml-13 ">Add to Cart</button>
-          </div>
-
-
-          <div className="rounded-xl bg-white p-8 text-left shadow-md transition hover:-translate-y-2 hover:shadow-xl md:w-60 w-full">
-            <div className=" ">
-                <img src={image2} alt="image2" className="w-full" />
-                 <p className=" pt-5">3.1⭐Ratting</p>
-            </div>
-            <h3 className="mt-1 text-xl font-bold pr-50">Air </h3>
-            <p className="mt-2 text-gray-500 ">
-              HAVELLS Prolife Brio Air Fryer 4.2 L
-            </p>
-            <div className="flex gap-2 ">
-              <span className="text-blue-600 font-bold">38%</span>
-            <p className="line-through"> 7,999</p> 
-            <span className="font-bold">  ₹4,999</span>
-           </div>
-           <button className="bg-yellow-400 w-23  rounded-xl mt-3 md:ml-13 ">Add to Cart</button>
-          </div>
-
-
-          <div className="rounded-xl bg-white p-8 text-left shadow-md transition hover:-translate-y-2 hover:shadow-xl md:w-60 w-full ">
-            <div className=" ">
-                <img src={image3} alt="image3" className="w-full" />
-                 <p className=" pt-5">4.5⭐Ratting</p>
-            </div>
-            <h3 className="mt-1 text-xl font-bold pr-50">Android </h3>
-            <p className="mt-2 text-gray-500 ">
-              MOTOROLA pad 60 neo 8 GB RAM 128 GB
-            </p>
-            <div className="flex gap-2 ">
-              <span className="text-blue-600 font-bold">24%</span>
-            <p className="line-through"> 24,999</p> 
-            <span className="font-bold">  ₹18,999</span>
-           </div>
-           <button className="bg-yellow-400 w-23  rounded-xl mt-3 md:ml-13 ">Add to Cart</button>
-          </div>
-
-
-
-
-          <div className="rounded-xl bg-white p-8 text-left shadow-md transition hover:-translate-y-2 hover:shadow-xl md:w-60 w-full ">
-            <div className=" ">
-                <img src={image4} alt="image4" className="w-full" />
-                 <p className=" pt-5">4.2⭐Ratting</p>
-            </div>
-            <h3 className="mt-1 text-xl font-bold pr-50">Speaker</h3>
-            <p className="mt-2 text-gray-500 ">
-              FERONS Wireless rechargeable brand new...
-            </p>
-            <div className="flex gap-2 ">
-              <span className="text-blue-600 font-bold">37%</span>
-            <p className="line-through"> 3,499</p> 
-            <span className="font-bold">  ₹2,199</span>
-           </div>
-           <button className="bg-yellow-400 w-23  rounded-xl mt-3 md:ml-13 ">Add to Cart</button>
-          </div>
-
-
-
-
-           <div className="rounded-xl bg-white p-8 text-left shadow-md transition hover:-translate-y-2 hover:shadow-xl md:w-60 w-full ">
-                      <div className=" ">
-                          <img src={image6} alt="image6" className="w-full" />
-                           <p className=" pt-5">3.2⭐Ratting</p>
-                      </div>
-                      <h3 className="mt-1 text-xl font-bold pr-50">Cameras</h3>
-                      <p className="mt-2 text-gray-500 ">
-                        Supreno 4k action camera 4k action camera Sports
-                      </p>
-                      <div className="flex gap-2 ">
-                        <span className="text-blue-600 font-bold">40%</span>
-                      <p className="line-through"> 69,999</p> 
-                      <span className="font-bold">  ₹55,999</span>
-                     </div>
-                     <button className="bg-yellow-400 w-23  rounded-xl mt-3 md:ml-13 ">Add to Cart</button>
-                    </div>
-          
-          
-          
-          
-          
-           <div className="rounded-xl bg-white p-8 text-left shadow-md transition hover:-translate-y-2 hover:shadow-xl md:w-60 w-full ">
-                      <div className=" ">
-                          <img src={image7} alt="image7" className="w-full" />
-                           <p className=" pt-5">2.5⭐Ratting</p>
-                      </div>
-                      <h3 className="mt-1 text-xl font-bold pr-50">Bag</h3>
-                      <p className="mt-2 text-gray-500 ">
-                        Arctic Fox Shutter Basics Grey  Camera Bag (Black)
-                      </p>
-                      <div className="flex gap-2 ">
-                        <span className="text-blue-600 font-bold">40%</span>
-                      <p className="line-through"> 2499</p> 
-                      <span className="font-bold">  ₹1499</span>
-                     </div>
-                     <button className="bg-yellow-400 w-23  rounded-xl mt-3 md:ml-13 ">Add to Cart</button>
-                    </div>
-
-
-
-
-
-
-    </div>
-
-   </>
-
-
-
-
-
-
   );
 }
 

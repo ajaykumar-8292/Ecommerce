@@ -87,7 +87,7 @@ function Products() {
       {/*Search bar */}
 
       <div className="flex   md:pl-100   h-18 pt-2 pb-3 pl-2 pr-2  bg-gray-500 sticky top-16">
-        <div className="flex gap-3 bg-white rounded-lg md:pl-5 pl-2 w-full">
+        <div className="flex gap-3 bg-white rounded-lg md:pl-5 pl-2 w-full md:w-200">
             <FaSearch className="text-4xl mt-2 cursor-pointer   " />
 
             <input type="text" className=" border border-black rounded-lg mt-1 h-10  "   placeholder="Search product... "  ></input>
